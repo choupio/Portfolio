@@ -1,0 +1,79 @@
+:root {
+  --cyanotype: #123a73;
+  --calque: #eef3f9;
+  --quadrillage: #3f6db5;
+  --orange: #ff6b1a;
+  --aqua: #45d9d2;
+  --encre: #0a2147;
+
+  --police-titre: 'Archivo Variable', system-ui, sans-serif;
+  --police-texte: 'Source Serif 4 Variable', Georgia, serif;
+  --police-code: 'IBM Plex Mono', ui-monospace, monospace;
+
+  --marge: clamp(1rem, 5vw, 4rem);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background-color: var(--cyanotype);
+  background-image:
+    linear-gradient(color-mix(in srgb, var(--quadrillage) 35%, transparent) 1px, transparent 1px),
+    linear-gradient(90deg, color-mix(in srgb, var(--quadrillage) 35%, transparent) 1px, transparent 1px);
+  background-size: 48px 48px;
+  color: var(--calque);
+  font-family: var(--police-texte);
+  font-size: 1.125rem;
+  line-height: 1.65;
+}
+
+h1,
+h2,
+h3 {
+  margin: 0;
+  font-family: var(--police-titre);
+  font-weight: 700;
+  font-variation-settings: 'wdth' 125, 'wght' 700;
+  line-height: 1.05;
+}
+
+p {
+  max-width: 70ch;
+  margin: 0;
+}
+
+a {
+  color: inherit;
+}
+
+:focus-visible {
+  outline: 3px solid var(--aqua);
+  outline-offset: 3px;
+}
+
+.bouton {
+  display: inline-block;
+  padding: 0.75rem 1.25rem;
+  border: 2px solid var(--orange);
+  background: var(--orange);
+  color: var(--encre);
+  font-family: var(--police-titre);
+  font-variation-settings: 'wdth' 110, 'wght' 700;
+  text-decoration: none;
+}
+
+.bouton.secondaire {
+  background: transparent;
+  border-color: var(--calque);
+  color: var(--calque);
+}
+
+.clair {
+  background: var(--calque);
+  color: var(--encre);
+}

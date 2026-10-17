@@ -1,0 +1,61 @@
+---
+import '@fontsource-variable/archivo/wdth.css';
+import '@fontsource-variable/source-serif-4';
+import '@fontsource/ibm-plex-mono/400.css';
+import '../styles/global.css';
+
+interface Props {
+  titre: string;
+  description?: string;
+}
+
+const {
+  titre,
+  description = 'Portfolio de Prénom Nom, étudiant en informatique, parcours cloud et réseaux.',
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={description} />
+    <title>{titre}</title>
+  </head>
+  <body>
+    <header class="entete">
+      <a class="nom" href="/">Prénom Nom</a>
+      <nav aria-label="Navigation principale">
+        <a href="/#projets">Projets</a>
+        <a href="/#contact">Contact</a>
+      </nav>
+    </header>
+    <main>
+      <slot />
+    </main>
+  </body>
+</html>
+
+<style>
+  .entete {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding: 1.25rem var(--marge);
+    font-family: var(--police-titre);
+  }
+  .entete a {
+    text-decoration: none;
+  }
+  .entete a:hover {
+    text-decoration: underline;
+  }
+  .nom {
+    font-variation-settings: 'wdth' 125, 'wght' 700;
+  }
+  nav {
+    display: flex;
+    gap: 1.5rem;
+  }
+</style>

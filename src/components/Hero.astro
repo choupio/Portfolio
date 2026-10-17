@@ -1,0 +1,95 @@
+---
+const couches = [
+  { numero: 7, nom: 'Application' },
+  { numero: 6, nom: 'Présentation' },
+  { numero: 5, nom: 'Session' },
+  { numero: 4, nom: 'Transport' },
+  { numero: 3, nom: 'Réseau' },
+  { numero: 2, nom: 'Liaison' },
+  { numero: 1, nom: 'Physique' },
+];
+---
+
+<section class="hero" aria-labelledby="titre-hero">
+  <ol class="pile" aria-label="Les sept couches du modèle OSI">
+    {
+      couches.map((couche) => (
+        <li class:list={['couche', { actif: couche.numero === 7 }]}>
+          <span class="numero">{couche.numero}</span>
+          <span>{couche.nom}</span>
+        </li>
+      ))
+    }
+  </ol>
+
+  <div class="message">
+    <h1 id="titre-hero">Prénom Nom</h1>
+    <p class="accroche">
+      Étudiant en informatique, parcours cloud et réseaux. À adapter : ce que tu
+      cherches (stage, alternance) et ce que tu sais faire.
+    </p>
+    <p class="actions">
+      <a class="bouton" href="#projets">Voir les projets</a>
+      <a class="bouton secondaire" href="/cv.pdf">Télécharger le CV (PDF)</a>
+    </p>
+  </div>
+</section>
+
+<style>
+  .hero {
+    display: grid;
+    grid-template-columns: minmax(11rem, 15rem) 1fr;
+    gap: 3rem;
+    align-items: center;
+    min-height: 80svh;
+    padding: 3rem var(--marge) 5rem;
+  }
+  .pile {
+    display: grid;
+    gap: 0.5rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  .couche {
+    display: flex;
+    gap: 1rem;
+    align-items: baseline;
+    padding: 0.6rem 0.9rem;
+    border: 1px solid var(--quadrillage);
+    font-family: var(--police-titre);
+    color: color-mix(in srgb, var(--calque) 70%, transparent);
+  }
+  .couche.actif {
+    border-color: var(--orange);
+    background: color-mix(in srgb, var(--orange) 14%, transparent);
+    color: var(--calque);
+  }
+  .numero {
+    width: 1.5ch;
+    color: var(--aqua);
+    font-variation-settings: 'wdth' 125, 'wght' 700;
+  }
+  h1 {
+    font-size: clamp(2.75rem, 8vw, 6rem);
+  }
+  .accroche {
+    margin-top: 1.5rem;
+    font-size: 1.35rem;
+  }
+  .actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-top: 2rem;
+  }
+  @media (max-width: 720px) {
+    .hero {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+    .message {
+      order: -1;
+    }
+  }
+</style>
